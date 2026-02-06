@@ -250,6 +250,8 @@ namespace snapper
 
 	if (source_state == SourceState::MISSING)
 	    SN_THROW(Exception(_("Snapshot not on source.")));
+	else if (source_state == SourceState::READ_WRITE)
+	    SN_THROW(Exception(_("Cannot transfer a read-write snapshot.")));
 
 	if (target_state != TargetState::MISSING)
 	    SN_THROW(Exception(_("Snapshot already on target.")));
